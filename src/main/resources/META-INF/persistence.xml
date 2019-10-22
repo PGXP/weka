@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="br.gov.serpro_Bilbliaia_jar_1.0.0PU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>br.gov.serpro.bilbliaia.entity.Livros</class>
+    <class>br.gov.serpro.bilbliaia.entity.Testamentos</class>
+    <class>br.gov.serpro.bilbliaia.entity.Versoes</class>
+    <class>br.gov.serpro.bilbliaia.entity.Versiculos</class>
+    <class>br.gov.serpro.bilbliaia.entity.Sentimento</class>
+    <class>br.gov.serpro.bilbliaia.entity.Palavraschave</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://10.79.62.141/info"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="9E2aFyUXRRr3vHfQnx9773HfACPDVRx7UNDD"/>
+    </properties>
+  </persistence-unit>
+</persistence>
