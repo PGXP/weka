@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.gov.serpro.bilbliaia;
+package br.gov.serpro.weka;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import weka.clusterers.ClusterEvaluation;
+import weka.clusterers.SimpleKMeans;
 import weka.core.Instances;
 import weka.core.converters.ConverterUtils.DataSource;
 
@@ -23,12 +25,18 @@ public class Treinar {
 
         try {
             DataSource source = new DataSource("feira.arff");
-            Instances data = source.getDataSet();
-            // setting class attribute if the data format does not provide this information
-            // For example, the XRFF format saves the class attribute information as well
-            if (data.classIndex() == -1) {
-                data.setClassIndex(data.numAttributes() - 1);
-            }
+            Instances traindata = source.getDataSet();
+            traindata.setClassIndex(traindata.numAttributes() - 1);
+
+            SimpleKMeans kmeans = new SimpleKMeans();
+            kmeans.setNumClusters(8);
+            kmeans.buildClusterer(traindata);
+
+            ClusterEvaluation eval = new ClusterEvaluation();
+            eval.setClusterer(kmeans);
+            eval.evaluateClusterer(traindata);
+            System.out.println(eval.clusterResultsToString());
+
         } catch (Exception ex) {
             Logger.getLogger(Treinar.class.getName()).log(Level.SEVERE, null, ex);
         }
